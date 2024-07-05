@@ -4,15 +4,11 @@
 template <class S>
 class Shape
 {
-private:
-    static int count;
-
 public:
     virtual S area() const = 0;
     virtual S perimeter() const = 0;
     virtual void display() const = 0;
     virtual ~Shape() {}
-    static int getCount() { return count; }
 };
 
 class CountShape
