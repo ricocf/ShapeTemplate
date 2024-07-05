@@ -20,6 +20,7 @@ public:
     static int getCount() { return count; }
     template <class C> friend class Circle;
     template <class T> friend class Triangle;
+    template <class R> friend class Rectangle;
 };
 
 int CountShape::count = 0;
