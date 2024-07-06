@@ -4,6 +4,7 @@
 #include "../include/Shape.h"
 #include "../include/Triangle.h"
 #include "../include/Rectangle.h"
+#include "../include/Square.h"
 
 int main()
 {
