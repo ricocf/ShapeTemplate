@@ -8,8 +8,8 @@
 
 int main()
 {
-    auto circle_radius = std::make_shared<double>(3.54);
-    Circle<std::shared_ptr<double>> circle(circle_radius);
+
+    Circle<double> circle(5.5);
     circle.display();
 
     Triangle<double> triangle(3.0, 4.5, 5.0);
