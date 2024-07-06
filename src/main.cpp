@@ -15,9 +15,11 @@ int main()
     Triangle<double> triangle(3.0, 4.5, 5.0);
     triangle.display();
 
-
     Rectangle<double> rectangle(4.5, 8.5);
     rectangle.display();
+
+    Square<double> square(5.0);
+    square.display();
 
     std::cout << "Total Shapes created: " << CountShape::getCount() << std::endl;
 }
