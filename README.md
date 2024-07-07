@@ -1,1 +1,1 @@
-This repository provides a simple example of using C++ templates, smart pointers, and object-oriented programming to define and manipulate geometric shapes such as circles and triangles. 
+This repository provides a simple example of using C++ templates, smart pointers, and object-oriented programming to define and manipulate geometric shapes such as circles, rectangles, squares, and triangles. It includes Docker configuration for a consistent environment, CI/CD workflows for automated testing, and build scripts for easy setup and extension
