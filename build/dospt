@@ -1,0 +1,22 @@
+#!/bin/bash
+
+sudo apt update
+sudo apt install -y apt-transport-https ca-certificates curl software-properties-common
+if [ $? -eq 0 ]; then
+  curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+  if [ $? -eq 0 ]; then
+    sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu bionic stable"
+    sudo apt update
+    res=$(apt list -a docker-ce | grep "docker-ce")
+    if [ -n "$res" ]; then
+      sudo apt install -y docker-ce
+    else
+      echo "Docker CE is not available in the repository."
+    fi
+  else
+    echo "Failed to add Docker GPG key."
+  fi
+else
+  echo "Failed to install required packages."
+fi
+
