@@ -11,7 +11,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Run script
-        run: ./run_shapes.sh > build/run.log 2>&1 || error "Script failed"
+        run: ./run_shapes.sh > ./build/run.log 2>&1 || error "Script failed"
       - name: Upload log file on failure
         if: failure()
         uses: actions/upload-artifact@v3 
