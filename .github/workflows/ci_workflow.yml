@@ -1,0 +1,39 @@
+name: CI
+on: 
+  push:
+  schedule:
+    - cron: '0 0 * * *'
+
+jobs:
+
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run script
+        run: ./run_shapes.sh || echo "Script failed"
+      - name: Upload log file on failure
+        if: failure()
+        uses: actions/upload-artifact@v3 
+        with:
+          name: script-log-file
+          path: build/script.log
+
+  docker:
+      runs-on: ubuntu-latest
+      steps: 
+        - uses: actions/checkout@4
+        - name: Build Docker image
+          run: docker build . --file Dockerfile --tag image:$(date +%s) || echo "Failed to create image"
+        - name: Run Docker container
+          run: docker run --rm image:$(date +%s) || echo "Failed to run image"
+        - name: Upload log file on failure
+          if: failure()
+          uses: actions/upload-artifact@v3 
+          with:
+            name: docker-log-file
+            path: build/docker.log
+        
+
+            path: build/docker.log
+        
