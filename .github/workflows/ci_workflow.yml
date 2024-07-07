@@ -15,13 +15,13 @@ jobs:
           { ./run_shapes.sh > ./build/run.log 2>&1 || { echo "Script failed" && exit 1; }; }  
           cat ./build/run.log
       - name: upload-run-log-file
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: run-log-file
           path: build/run.log
       - name: Upload log file on failure
         if: failure()
-        uses: actions/upload-artifact@v3 
+        uses: actions/upload-artifact@v4
         with:
           name: script-log-file
           path: ./build/f_script.log
@@ -38,7 +38,7 @@ jobs:
             { docker run --rm image:ci_workflow || { echo "Failed to run image" && exit 1; }; }
         - name: Upload log file on failure
           if: failure()
-          uses: actions/upload-artifact@v3 
+          uses: actions/upload-artifact@v4 
           with:
             name: docker-log-file
             path: ./build/f_docker.log
