@@ -11,7 +11,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Run script
-        run: ./run_shapes.sh || echo "Script failed"
+        run: ./run_shapes.sh > build/run.log 2>&1 || error "Script failed"
       - name: Upload log file on failure
         if: failure()
         uses: actions/upload-artifact@v3 
@@ -24,9 +24,9 @@ jobs:
       steps: 
         - uses: actions/checkout@v4
         - name: Build Docker image
-          run: docker build . --file Dockerfile --tag image:$(date +%s) || echo "Failed to create image"
+          run: docker build . --file Dockerfile --tag image:ci_workflow || error "Failed to create image"
         - name: Run Docker container
-          run: docker run --rm image:$(date +%s) || echo "Failed to run image"
+          run: docker run --rm image:ci_workflow || error "Failed to run image"
         - name: Upload log file on failure
           if: failure()
           uses: actions/upload-artifact@v3 
