@@ -2,8 +2,6 @@
 #define SQUARE_H
 
 #include <iostream>
-#include <memory>
-#include <vector>
 #include "Shape.h"
 
 template <class Sq>

@@ -2,8 +2,6 @@
 #define SPHERE_H
 
 #include <iostream>
-#include <memory>
-#include <vector>
 #include "Shape.h"
 
 namespace sphere_constants

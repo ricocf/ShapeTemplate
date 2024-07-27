@@ -2,7 +2,6 @@
 #define CIRCLE_H
 
 #include <iostream>
-#include <memory>
 #include "Shape.h"
 namespace circle_constants
 {

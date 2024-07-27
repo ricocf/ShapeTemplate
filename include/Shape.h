@@ -1,6 +1,11 @@
 #ifndef SHAPE_H
 #define SHAPE_H
 
+#include <memory>
+#include <tuple>
+#include <cmath>
+#include <vector>
+
 template <class S>
 class Shape
 {
@@ -8,7 +13,7 @@ public:
     virtual S area() const = 0;
     virtual S perimeter() const = 0;
     virtual void display() const = 0;
-    virtual ~Shape() {}
+    virtual ~Shape() = default;
 };
 
 class CountShape

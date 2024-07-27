@@ -2,7 +2,6 @@
 #define RECTANGLE_H
 
 #include <iostream>
-#include <memory>
 #include "Shape.h"
 
 template <class R>

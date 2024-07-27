@@ -2,9 +2,6 @@
 #define TRIANGLE_H
 
 #include <iostream>
-#include <memory>
-#include <tuple>
-#include <cmath>
 #include "Shape.h"
 
 template <class T>
