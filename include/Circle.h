@@ -4,7 +4,10 @@
 #include <iostream>
 #include <memory>
 #include "Shape.h"
-const auto pi = std::make_shared<double>(3.141);
+namespace circle_constants
+{
+    const auto pi = std::make_shared<double>(3.141);
+}
 
 template <class C>
 class Circle : public Shape<C>, public CountShape
@@ -26,14 +29,14 @@ public:
 template <class C>
 C Circle<C>::area() const
 {
-    auto area_value = ((*radius) * (*radius) * (*pi));
+    auto area_value = ((*radius) * (*radius) * (*circle_constants::pi));
     return area_value;
 }
 
 template <class C>
 C Circle<C>::perimeter() const
 {
-    auto perimeter_value = (2 * (*pi) * (*radius));
+    auto perimeter_value = (2 * (*circle_constants::pi) * (*radius));
     return perimeter_value;
 }
 
