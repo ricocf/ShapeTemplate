@@ -22,6 +22,7 @@ public:
     template <class T> friend class Triangle;
     template <class R> friend class Rectangle;
     template <class Sq> friend class Square;
+    template <class Sp> friend class Sphere;
 };
 
 int CountShape::count = 0;
