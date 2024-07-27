@@ -1,11 +1,5 @@
 #include <iostream>
 #include "../include/Shape.h"
-// #include "../include/Circle.h"
-// #include "../include/Triangle.h"
-// #include "../include/Rectangle.h"
-// #include "../include/Square.h"
-// #include "../include/Sphere.h"
-// #include "../include/Circle.h"
 #include "../include/include.h"
 
 int main()
