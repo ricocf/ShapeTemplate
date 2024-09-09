@@ -10,7 +10,7 @@ RUN apt-get update && apt-get install -y \
 
 WORKDIR /app
 COPY . /app
-RUN chmod +x run_shapes.sh
-CMD ["./run_shapes.sh"]
+RUN g++ src/main.cpp -o ShapeTemplate
+CMD ./ShapeTemplate && rm ShapeTemplate
 
 

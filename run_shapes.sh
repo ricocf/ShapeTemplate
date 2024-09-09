@@ -12,6 +12,7 @@ then
 	else
 		g++ $PWD/src/main.cpp -o ShapeTemplate
 		./ShapeTemplate
+		rm ShapeTemplate
 	fi
 fi	
 
