@@ -30,12 +30,9 @@ jobs:
       runs-on: ubuntu-latest
       steps: 
         - uses: actions/checkout@v4
-        - name: Build Docker image
+        - name: Docker image
           run: |
-            { docker build . --file Dockerfile --tag image:ci_workflow || { echo "Failed to create image" && exit 1; }; }
-        - name: Run Docker container
-          run: |
-            { docker run --rm image:ci_workflow || { echo "Failed to run image" && exit 1; }; }
+            { ./run_shapes.sh Docker > ./build/run.log 2>&1 || { echo "Script failed" && exit 1; }; }
         - name: Upload log file on failure
           if: failure()
           uses: actions/upload-artifact@v4 
