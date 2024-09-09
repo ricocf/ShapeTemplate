@@ -32,7 +32,7 @@ jobs:
         - uses: actions/checkout@v4
         - name: Docker image
           run: |
-            { ./run_shapes.sh Docker > ./build/run.log 2>&1 || { echo "Script failed" && exit 1; }; }
+            { ./run_shapes.sh Docker || { echo "Script failed" && exit 1; }; }
         - name: Upload log file on failure
           if: failure()
           uses: actions/upload-artifact@v4 
