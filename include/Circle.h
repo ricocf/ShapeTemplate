@@ -5,44 +5,56 @@
 #include "Shape.h"
 namespace circle_constants
 {
-    const auto pi = std::make_shared<double>(3.141);
+    constexpr double pi = 3.141592653589793;
 }
-
 template <class C>
-class Circle : public Shape<C>, public CountShape
+class Circle : public Shape<C>, public modShape
 {
 private:
+    std::string name = "Circle";
     std::shared_ptr<C> radius;
+    C scaleFactor, effectiveRadius;
 
 public:
-    Circle(C rad)
+    Circle(C rad, C scale = 1) : scaleFactor(scale)
     {
         radius = std::make_shared<C>(rad);
-        CountShape::count++;
+        modShape::count++;
+
+        effectiveRadius = (scaleFactor > 1) ? scaleShape() : *radius;
     }
-    C area() const override;
-    C perimeter() const override;
+    double scaleShape() const override
+    {
+        double effectiveScaleFactor = validateScaleFactor(scaleFactor, name);
+        return (*radius) * effectiveScaleFactor;
+    }
+    C area() const override
+    {
+        return circle_constants::pi * (effectiveRadius * effectiveRadius);
+    }
+    C perimeter() const override
+    {
+        auto perimeter_value = (2 * circle_constants::pi * effectiveRadius);
+        return perimeter_value;
+    }
     void display() const override;
 };
 
 template <class C>
-C Circle<C>::area() const
-{
-    auto area_value = ((*radius) * (*radius) * (*circle_constants::pi));
-    return area_value;
-}
-
-template <class C>
-C Circle<C>::perimeter() const
-{
-    auto perimeter_value = (2 * (*circle_constants::pi) * (*radius));
-    return perimeter_value;
-}
-
-template <class C>
 void Circle<C>::display() const
 {
-    std::cout << "Circle: radius = " << *radius << ", area = " << area() << ", perimeter = " << perimeter() << std::endl;
+    if (scaleFactor == 1)
+    {
+        std::cout << "Circle: radius = " << *radius
+                  << ", area = " << area()
+                  << ", perimeter = " << perimeter() << std::endl;
+    }
+    else
+    {
+        std::cout << "Circle: scaled radius = " << effectiveRadius
+                  << ", scaled area = " << area()
+                  << ", scaled perimeter = " << perimeter() << std::endl;
+    }
 }
 
 #endif // CIRCLE_H

@@ -26,13 +26,13 @@ private:
     static int count;
 
 protected:
-    double validateScaleFactor(double scaleFactor) const
+    double validateScaleFactor(double scaleFactor, std::string name) const
     {
         if (scaleFactor < 0)
             return 1;
 
         if (scaleFactor > 100)
-            throw std::invalid_argument("High scaling factor: " + std::to_string(scaleFactor));
+            throw std::invalid_argument("Shape: " + name + "\n  High scaling factor: " + std::to_string(scaleFactor));
 
         return scaleFactor;
     }
