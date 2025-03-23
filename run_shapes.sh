@@ -25,5 +25,8 @@ then
 		docker build . --file Dockerfile --tag image:ci_workflow || { echo "Failed to run image"; exit 1; }
 		docker run --rm image:ci_workflow || { echo "Failed to run image"; exit 1; }
 	fi
+elif [[ $# -ne 0 ]]
+then
+	echo "Wrong argument"
 fi
 
