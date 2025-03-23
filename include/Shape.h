@@ -20,20 +20,41 @@ public:
     virtual ~Shape() = default;
 };
 
-class CountShape
+class modShape
 {
 private:
     static int count;
 
+protected:
+    double validateScaleFactor(double scaleFactor) const
+    {
+        if (scaleFactor < 0)
+            return 1;
+
+        if (scaleFactor > 100)
+            throw std::invalid_argument("High scaling factor: " + std::to_string(scaleFactor));
+
+        return scaleFactor;
+    }
+
 public:
-    static int getCount() { return count; }
-    template <class C> friend class Circle;
-    template <class T> friend class Triangle;
-    template <class R> friend class Rectangle;
-    template <class Sq> friend class Square;
-    template <class Sp> friend class Sphere;
+    static int getShapeCount() { return count; }
+    template <class C>
+    friend class Circle;
+    template <class T>
+    friend class Triangle;
+    template <class R>
+    friend class Rectangle;
+    template <class Sq>
+    friend class Square;
+    template <class Sp>
+    friend class Sphere;
+    virtual double scaleShape() const
+    {
+        return 1.0;
+    }
 };
 
-int CountShape::count = 0;
+int modShape::count = 0;
 
 #endif // SHAPE_H

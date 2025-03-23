@@ -5,7 +5,7 @@
 #include "Shape.h"
 
 template <class T>
-class Triangle : public Shape<T>, public CountShape
+class Triangle : public Shape<T>, public modShape
 {
 private:
     // Tuple to store the three sides of the triangle
@@ -15,7 +15,7 @@ public:
     Triangle(T S1, T S2, T S3)
     {
         sides = std::make_tuple(std::make_shared<T>(S1), std::make_shared<T>(S2), std::make_shared<T>(S3));
-        CountShape::count++;
+        modShape::count++;
     }
     T area() const override;
     T perimeter() const override;

@@ -5,7 +5,7 @@
 #include "Shape.h"
 
 template <class Sq>
-class Square : public Shape<Sq>, public CountShape
+class Square : public Shape<Sq>, public modShape
 {
 private:
     std::vector<std::shared_ptr<Sq>> sqr;
@@ -14,7 +14,7 @@ public:
     Square(Sq side)
     {
         sqr.push_back(std::make_shared<Sq>(side));
-        CountShape::count++;
+        modShape::count++;
     }
     Sq area() const override;
     Sq perimeter() const override;

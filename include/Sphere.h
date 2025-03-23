@@ -11,7 +11,7 @@ namespace sphere_constants
 }
 
 template <class Sp>
-class Sphere : public Shape<Sp>, public CountShape
+class Sphere : public Shape<Sp>, public modShape
 {
 private:
     std::vector<std::shared_ptr<Sp>> radius;
@@ -20,7 +20,7 @@ public:
     Sphere(Sp rad)
     {
         radius.push_back(std::make_shared<Sp>(rad));
-        CountShape::count++;
+        modShape::count++;
     }
     Sp area() const override;
     Sp perimeter() const override;

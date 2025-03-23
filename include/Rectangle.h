@@ -5,7 +5,7 @@
 #include "Shape.h"
 
 template <class R>
-class Rectangle : public Shape<R>, public CountShape
+class Rectangle : public Shape<R>, public modShape
 {
 private:
     std::pair<std::shared_ptr<R>, std::shared_ptr<R>> rect;
@@ -14,7 +14,7 @@ public:
     Rectangle(R len, R wid)
     {
         rect = std::make_pair(std::make_shared<R>(len), std::make_shared<R>(wid));
-        CountShape::count++;
+        modShape::count++;
     }
     R area() const override;
     R perimeter() const override;
